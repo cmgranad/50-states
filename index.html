@@ -19,11 +19,19 @@
       <p class="sub" id="countdown"></p>
     </div>
     <nav class="tabs" role="tablist">
-      <button role="tab" data-mode="drag" aria-selected="true">Drag &amp; Drop</button>
-      <button role="tab" data-mode="fill" aria-selected="false">Fill In</button>
-      <button role="tab" data-mode="print" aria-selected="false">Print</button>
+      <button role="tab" data-phase="practice" aria-selected="true">Practice</button>
+      <button role="tab" data-phase="test" aria-selected="false">Test</button>
+      <button role="tab" data-phase="print" aria-selected="false">Print</button>
     </nav>
   </header>
+
+  <div class="subbar" id="subbar">
+    <div class="seg" role="group" aria-label="Answer style">
+      <button data-kind="drag" aria-selected="true">Drag &amp; Drop</button>
+      <button data-kind="fill" aria-selected="false">Fill In</button>
+    </div>
+    <p class="note" id="phaseNote"></p>
+  </div>
 
   <!-- PRACTICE (drag + fill share this layout) -->
   <main id="practice">
@@ -44,11 +52,18 @@
     <section class="right">
       <div class="card">
         <div class="toolbar">
-          <div class="score" id="score">0 / 50</div>
+          <div class="progress">
+            <div class="score" id="score"></div>
+            <div class="bar"><span id="bar"></span></div>
+            <div class="msg" id="scoreMsg"></div>
+          </div>
           <div class="btns">
-            <button class="btn primary" id="checkBtn">Check answers</button>
-            <button class="btn" id="revealBtn">Show answers</button>
-            <button class="btn" id="resetBtn">Start over</button>
+            <button class="btn primary" id="hintBtn" data-for="practice">💡 Hint</button>
+            <button class="btn" id="revealBtn" data-for="practice">Show all answers</button>
+            <button class="btn" id="resetBtn" data-for="practice">Start over</button>
+            <button class="btn primary" id="finishBtn" data-for="test-open">I'm finished ✓</button>
+            <button class="btn primary" id="resultsBtn" data-for="test-done">See my results</button>
+            <button class="btn" id="newTestBtn" data-for="test">New test</button>
           </div>
         </div>
         <ol id="slots" class="slots"></ol>
@@ -75,6 +90,20 @@
 </div>
 
 <div id="ghost" class="chip ghost" hidden></div>
+
+<dialog id="results" class="results">
+  <div class="res-stars" id="resStars"></div>
+  <h2 id="resTitle"></h2>
+  <p class="res-msg" id="resMsg"></p>
+  <p class="res-small" id="resBonus"></p>
+  <p class="res-small" id="resHistory"></p>
+  <h3 id="resPracticeHead">States to practice next</h3>
+  <div class="res-list" id="resList"></div>
+  <div class="btns res-btns">
+    <button class="btn primary" id="practiceMisses">Practice these</button>
+    <button class="btn" id="closeResults">Look over my test</button>
+  </div>
+</dialog>
 
 <script src="states.js"></script>
 <script src="app.js"></script>
