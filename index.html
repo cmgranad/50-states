@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>50 States Study</title>
+<meta name="description" content="Practice naming all 50 U.S. states: drag and drop, fill in, and a printable blank worksheet.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🗺️</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@500;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="app">
+  <header class="top">
+    <div class="title">
+      <h1>50 States Study</h1>
+      <p class="sub" id="countdown"></p>
+    </div>
+    <nav class="tabs" role="tablist">
+      <button role="tab" data-mode="drag" aria-selected="true">Drag &amp; Drop</button>
+      <button role="tab" data-mode="fill" aria-selected="false">Fill In</button>
+      <button role="tab" data-mode="print" aria-selected="false">Print</button>
+    </nav>
+  </header>
+
+  <!-- PRACTICE (drag + fill share this layout) -->
+  <main id="practice">
+    <section class="left">
+      <div class="card map-card">
+        <div id="map"></div>
+        <p class="hint" id="mapHint">Tip: tap a state on the map to jump to its number.</p>
+      </div>
+      <div class="card bank-card">
+        <div class="bank-head">
+          <h2>Word Bank</h2>
+          <span class="hint" id="bankHint"></span>
+        </div>
+        <div id="bank" class="bank"></div>
+      </div>
+    </section>
+
+    <section class="right">
+      <div class="card">
+        <div class="toolbar">
+          <div class="score" id="score">0 / 50</div>
+          <div class="btns">
+            <button class="btn primary" id="checkBtn">Check answers</button>
+            <button class="btn" id="revealBtn">Show answers</button>
+            <button class="btn" id="resetBtn">Start over</button>
+          </div>
+        </div>
+        <ol id="slots" class="slots"></ol>
+      </div>
+      <div class="card">
+        <h2>Questions</h2>
+        <ol class="questions" id="questions"></ol>
+      </div>
+    </section>
+  </main>
+
+  <!-- PRINT PREVIEW / CONTROLS -->
+  <main id="printPanel" hidden>
+    <div class="card print-controls">
+      <h2>Print a worksheet</h2>
+      <p>Prints one page: the numbered map, 50 blank lines, the 3 questions, and the word bank — ready to fill in by hand.</p>
+      <div class="btns">
+        <button class="btn primary" id="printBlank">Print blank worksheet</button>
+        <button class="btn" id="printKey">Print answer key</button>
+      </div>
+    </div>
+    <div class="paper-wrap"><div id="sheet" class="sheet"></div></div>
+  </main>
+</div>
+
+<div id="ghost" class="chip ghost" hidden></div>
+
+<script src="states.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
